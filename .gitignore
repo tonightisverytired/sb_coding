@@ -1,0 +1,26 @@
+# Generated / cache
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+*.pyc
+.coverage
+coverage.json
+
+# Sandbox test code (not part of skill)
+sandbox_test/
+
+# Local verification code (not part of skill)
+src/
+tests_payment/
+tests_taskrunner/
+tests_validator/
+
+# Mock OpenSpec environment (not part of skill)
+openspec/config.yaml
+openspec/changes/
+openspec/specs/
+openspec/archive/
+
+# IDE
+.vscode/
+.idea/

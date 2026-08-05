@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Tracks in-progress pipeline state across sessions. Overwrite mode (per-run file). Emptied ({}) on Node 8 completion.",
+  "type": "object",
+  "properties": {
+    "change_name": { "type": "string", "description": "OpenSpec change name or PROJECT_SPEC identifier" },
+    "current_node": { "type": "string", "enum": ["Node 2", "Node 3", "Node 4", "Node 5", "Node 6", "Node 8"] },
+    "current_task": { "type": "string", "description": "TASK_PLAN task ID, e.g. T008" },
+    "current_file": { "type": "string", "description": "File currently being modified" },
+    "self_heal_round": { "type": "integer", "minimum": 0, "maximum": 3 },
+    "self_heal_of": { "type": "integer", "const": 3, "description": "Max rounds — fixed at 3 per CONFIG.md" },
+    "started_at": { "type": "string", "description": "ISO 8601 timestamp of pipeline start" },
+    "last_update": { "type": "string", "description": "ISO 8601 timestamp of last state write" },
+    "resume_hint": { "type": "string", "description": "Human-readable description of what was happening at interruption" }
+  },
+  "required": ["change_name", "current_node", "last_update"]
+}
