@@ -137,6 +137,10 @@ When starting the pipeline, the AI automatically detects the project root's flag
      [TOOL_CHECK] bash append shortcut: available ✅
      [TOOL_CHECK] layer-level mypy: enforced at Node 4 ✅
      [TOOL_CHECK] escape-hatch detection: active (Node 4→5)
+     [TOOL_CHECK] ponytail-review: available ✅ (advisory, Node 5)
+     [TOOL_CHECK] ponytail-audit: available (manual: /ponytail-audit)
+     [TOOL_CHECK] ponytail-gain: available (manual: /ponytail-gain)
+     [TOOL_CHECK] ponytail-help: available (manual: /ponytail-help)
      ```
      If a tool is unavailable (wrong template, missing dependency), mark `⚠️ degraded` with the fallback. For non-Python templates, `_contract_check.py` shows `⚠️ skipped (not Python template)`.
   6. **Session state check** — read `ai_pipeline/SESSION_STATE.json` (if exists; schema: `pipeline/_session_state_schema.json`). If non-empty, print the `resume_hint` (if present) and prompt: "⚠️ Detected incomplete pipeline from previous session. Last state: <current_node>/<current_task> (file: <current_file>, self-heal round <self_heal_round>/3). Resume? Reply 'resume' to continue from breakpoint, or 'restart' to start fresh." This replaces the implicit breakpoint recovery in SKILL.md §Breakpoint recovery with an explicit, data-backed prompt.

@@ -63,6 +63,7 @@ The AI must receive all of the following inputs:
   - Violation: `'unused_import' is imported but never used` → the AI removes that import.
 
 ### Step 4: Generate the final verification report
+- **Advisory ponytail-review** (optional, non-blocking): after Standard checks pass, invoke `ponytail-review` on the diff to scan for over-engineering in the current change (reinvented stdlib features, unnecessary dependencies, speculative abstractions). Findings are informational — append them to VERIFY_REPORT.md under "Ponytail review" but do NOT block the gate. If the review is skipped or the skill returns nothing, the pipeline proceeds normally.
 - Aggregate the Critical results, Standard results, and self-heal loop logs into `VERIFY_REPORT.md`.
 
 ## 4. Output schema (VERIFY_REPORT.md template)
