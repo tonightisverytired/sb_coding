@@ -29,22 +29,39 @@ grill-me → explore → propose → update  节点2(拆解) → 节点3(定位)
 ## 目录结构
 
 ```
-├── SKILL.md                  # 顶层技能：入口、分流规则、冲突裁决
-├── adaptive/                 # Pipeline 工具链自适应与不可降级底线
-├── ai_pipeline/              # 运行产物与持续沉淀（RUN_LOG / ERROR_MEMORY / TECH_NOTES / VERIFY 等）
-├── grill-me/                 # 设计压力测试技能
+├── SKILL.md                         # 顶层：入口、分流规则、冲突裁决
+├── adaptive/ADAPTIVE.md             # Pipeline 工具链自适应与不可降级底线
+├── grill-me/SKILL.md                # 设计压力测试（C1b >2、C2 >3 决策时触发）
+├── self_verify/SELF_VERIFY.md       # 三层自检协议（L0/L1/L2）
 ├── openspec/
-│   ├── commands/opsx/        # explore / propose / update / sync / archive / apply 命令
-│   └── skills/               # OpenSpec 各命令对应的技能实现
+│   ├── commands/opsx/               # CLI 命令：explore/propose/update/sync/archive/apply
+│   └── skills/                      # 各 OpenSpec 命令对应的技能实现
 ├── pipeline/
-│   ├── SKILL.md              # 6 阶段工程流水线总览
-│   ├── CONFIG.md             # 默认阈值单一事实源
-│   ├── _contract_check.py    # 自动化契约检查——仅 Python 模板（AST 解析；类型签名 + Gherkin 回退，命名空间感知）
-│   ├── _session_state_schema.json  # SESSION_STATE.json 参考 schema，用于跨会话恢复
-│   └── breakdown|locate|implement|verify|simulator_verify|commit|settle   # 各节点技能
+│   ├── SKILL.md                     # 6 阶段流水线总览 + 追加协议 + Entry 步骤
+│   ├── CONFIG.md                    # 所有默认阈值的单一事实源
+│   ├── _contract_check.py           # 自动化契约检查（Python AST；命名空间感知）
+│   ├── _session_state_schema.json   # SESSION_STATE.json 参考 schema
+│   ├── breakdown/BREAKDOWN.md       # 节点2：工程原子拆解
+│   ├── locate/LOCATE.md             # 节点3：精准代码定位
+│   ├── implement/IMPLEMENT.md       # 节点4：代码实现 + 自愈循环
+│   ├── verify/VERIFY.md             # 节点5：硬性静态质量闸门（mypy + ruff）
+│   ├── simulator_verify/SIMULATOR_VERIFY.md  # 节点6：运行时验证（pytest + 覆盖率）
+│   ├── commit/COMMIT.md             # 节点8：语义提交 + 收尾沉淀
+│   └── settle/SETTLE.md             # 从 RUN_LOG 生成 TECH_NOTES
 ├── ponytail_code/
-│   └── exported-skills/      # ponytail full / audit / debt / gain / help / review 子技能
-└── self_verify/              # 代码落地三层自检协议（L0/L1/L2）
+│   ├── SKILL.md                     # Ponytail 主入口：梯子框架 + 子技能索引
+│   └── exported-skills/
+│       ├── ponytail/SKILL.md        # 核心懒人规则（L2-L7 梯子）
+│       ├── ponytail-review/SKILL.md # 过度工程代码审查（diff 范围）
+│       ├── ponytail-audit/SKILL.md  # 全仓库过度工程审计
+│       ├── ponytail-debt/SKILL.md   # 技术债账本（ponytail: 标记收集）
+│       ├── ponytail-gain/SKILL.md   # 收益评分板（benchmark 中位数）
+│       └── ponytail-help/SKILL.md   # 快速参考卡
+├── ai_pipeline/
+│   ├── REFINEMENT_CHECKLIST.md      # 打磨清单（含不变量校验）
+│   └── ROUND2_PLAN.md              # 跨会话恢复 + OpenSpec CLI 联调方案
+├── README-EN.md                     # 英文版
+└── README.md                        # 本文件（中文版）
 ```
 
 ## 按复杂度分流

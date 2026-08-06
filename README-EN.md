@@ -27,22 +27,39 @@ grill-me → explore → propose → update        Node 2 (decompose) → Node 3
 ## Directory structure
 
 ```
-├── SKILL.md                  # Top-level skill: entry, routing rules, conflict rulings
-├── adaptive/                 # Toolchain adaptation and non-degradable verification baseline
-├── ai_pipeline/              # Runtime artifacts and continuous sedimentation (RUN_LOG / ERROR_MEMORY / TECH_NOTES / VERIFY, etc.)
-├── grill-me/                 # Design stress-test skill
+├── SKILL.md                         # Top-level: entry, routing rules, conflict rulings
+├── adaptive/ADAPTIVE.md             # Toolchain adaptation and non-degradable verification baseline
+├── grill-me/SKILL.md                # Design stress-test (triggered >2 decisions C1b, >3 C2)
+├── self_verify/SELF_VERIFY.md       # Three-layer self-check protocol (L0/L1/L2)
 ├── openspec/
-│   ├── commands/opsx/        # explore / propose / update / sync / archive / apply commands
-│   └── skills/               # Skill implementations behind each OpenSpec command
+│   ├── commands/opsx/               # CLI commands: explore/propose/update/sync/archive/apply
+│   └── skills/                      # Skill implementations behind each OpenSpec command
 ├── pipeline/
-│   ├── SKILL.md              # 6-stage engineering pipeline overview
-│   ├── CONFIG.md             # Single source of truth for default thresholds
-│   ├── _contract_check.py    # Automated contract checking — Python only (AST; type signatures + Gherkin fallback, namespace-aware)
-│   ├── _session_state_schema.json  # SESSION_STATE.json reference schema for cross-session recovery
-│   └── breakdown|locate|implement|verify|simulator_verify|commit|settle   # Node skills
+│   ├── SKILL.md                     # 6-stage pipeline overview + Append Protocol + Entry steps
+│   ├── CONFIG.md                    # Single source of truth for all default thresholds
+│   ├── _contract_check.py           # Automated contract checker (Python AST; namespace-aware)
+│   ├── _session_state_schema.json   # SESSION_STATE.json reference schema
+│   ├── breakdown/BREAKDOWN.md       # Node 2: engineering atomic decomposition
+│   ├── locate/LOCATE.md             # Node 3: precise code location
+│   ├── implement/IMPLEMENT.md       # Node 4: code implementation + self-heal loop
+│   ├── verify/VERIFY.md             # Node 5: hard static quality gate (mypy + ruff)
+│   ├── simulator_verify/SIMULATOR_VERIFY.md  # Node 6: runtime verification (pytest + coverage)
+│   ├── commit/COMMIT.md             # Node 8: semantic commit + wrap-up sedimentation
+│   └── settle/SETTLE.md             # TECH_NOTES generation from RUN_LOG
 ├── ponytail_code/
-│   └── exported-skills/      # ponytail full / audit / debt / gain / help / review sub-skills
-└── self_verify/              # Three-layer self-check protocol for code (L0/L1/L2)
+│   ├── SKILL.md                     # Ponytail main: ladder framework + sub-skill index
+│   └── exported-skills/
+│       ├── ponytail/SKILL.md        # Core lazy-mode rules (L2-L7 ladder)
+│       ├── ponytail-review/SKILL.md # Over-engineering code review (diff scope)
+│       ├── ponytail-audit/SKILL.md  # Whole-repository over-engineering audit
+│       ├── ponytail-debt/SKILL.md   # Tech-debt ledger from ponytail: markers
+│       ├── ponytail-gain/SKILL.md   # Benefit scoreboard (benchmark medians)
+│       └── ponytail-help/SKILL.md   # Quick reference card
+├── ai_pipeline/
+│   ├── REFINEMENT_CHECKLIST.md      # Improvement roadmap with invariant checks
+│   └── ROUND2_PLAN.md              # Cross-session recovery + OpenSpec CLI integration plan
+├── README-EN.md                     # This file (English)
+└── README.md                        # Chinese version (README.zh-CN)
 ```
 
 ## Routing by complexity
