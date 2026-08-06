@@ -1,5 +1,5 @@
 ---
-name: auto-coding
+name: sb-coding
 description: >
   OpenSpec + Pipeline + Ponytail parallel development system.
   OpenSpec handles business planning (explore/propose/sync), Pipeline handles engineering execution (locate→implement→verify→commit),
